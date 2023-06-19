@@ -1,0 +1,114 @@
+# closeAI
+Just playing with AI...
+
+19/06 Today I continued playing with OpenAI API. Evaluting Creativity Tests. This is what I got:
+
+Pricing for this prompt: 0.000110$
+
+
+Code: 
+question_1 = "QUESTION_STRING"
+
+completion = openai.ChatCompletion.create(
+  model = "gpt-3.5-turbo",
+  temperature = 0.8,
+  max_tokens = 2000,
+  messages = [
+    {"role": "system", "content": "System_ROLE" },
+    {"role": "user", "content": "ANSWER_CANDIDATE"}
+  ]
+)
+
+print(completion.choices[0].message.content)
+
+
+---------- Normal Question and 3 Types Answer ( Poor , Average And Brilliant) --------------
+
+Question: "Can you describe a situation where you had to think outside the box to solve a problem? What was the outcome?"
+System Role: You are the best creativity test evaluator. You are going to receive an answer from a candidate that is applying for a job to this question : '" + question_1 + "'. I need you to give scores based on this metrics: Specificity, Relevance, Problem-Solving, Initiative, Outcome, Self-Reflection, Creativity, Communication. Also give me a short explanation of your evaluation with pros and cons. Give an answer in a json format where each field is a metric, and also add average score and the explanation fields. 
+
+-- 1 --
+
+Pricing : 0.000110$
+
+Answer Candidate : I can't really think of a time when I had to be creative. I usually just follow procedures and do what I'm told.
+Answer Model: 
+{
+"Specificity": 1,
+"Relevance": 1,
+"Problem-Solving": 1,
+"Initiative": 1,
+"Outcome": 1,
+"Self-Reflection": 1,
+"Creativity": 1,
+"Communication": 1,
+"Average Score": 1,
+"Explanation": "The candidate's answer shows a lack of creativity, initiative, and problem-solving skills. They did not provide a specific example and their answer is not relevant to the question. The candidate did not demonstrate any ability to think outside the box or solve problems creatively, and their response did not show any self-reflection or communication skills. Overall, this answer is not suitable for a job that requires creativity and problem-solving skills."
+}
+
+-- 2 -- 
+Pricing : 0.000450$
+Answer Candidate : Once, I had to complete a project under a tight deadline, and I realized I wouldn't be able to finish on time if I followed the usual process. So, I decided to skip a few non-essential steps, which helped me finish the project on time.
+Answer Model:
+
+{
+   "Specificity": 2,
+   "Relevance": 3,
+   "Problem-Solving": 3,
+   "Initiative": 3,
+   "Outcome": 3,
+   "Self-Reflection": 2,
+   "Creativity": 2,
+   "Communication": 2,
+   "Average Score": 2.5,
+   "Explanation": "The answer provides some information, but it lacks specificity and detail. The relevance to the question is somewhat clear, but could be more explicitly stated. The candidate demonstrated some problem-solving skills by identifying potential roadblocks and taking action to address them, but the answer is somewhat vague on the details of the actual solution. The candidate demonstrated initiative by taking action to address the problem, but again, the answer could be more specific on the actions taken. The outcome is positive, as the project was completed on time, but the answer does not provide any information about the quality of the completed project. The answer lacks self-reflection or insight into what the candidate learned from the experience. There is some evidence of creativity, but again, the answer lacks details on the actual solution implemented. The answer lacks communication skills, as it is somewhat vague and lacks details. Overall, the answer could benefit from more specificity and detail to fully demonstrate the candidate's abilities in the specified metrics."
+}
+
+-- 3 --
+
+Pricing : 0.000575$
+
+Question: In my previous role at XYZ Company, we were struggling with a major client who was not happy with the standard reports we were providing. I suggested we revamp the report layout and design a more interactive, visually appealing format using a new data visualization tool. I took the initiative to learn the tool, redesigned the report, and presented it to the client. They loved the new format, which not only resolved their initial complaints but also led to them increasing their business with us. This experience taught me that creative solutions can turn challenges into opportunities.
+Answer: 
+{
+"Specificity": 4,
+"Relevance": 5,
+"Problem-Solving": 5,
+"Initiative": 5,
+"Outcome": 5,
+"Self-Reflection": 4,
+"Creativity": 5,
+"Communication": 4,
+"Average Score": 4.71,
+"Explanation": "The candidate provided a specific and relevant example of thinking outside the box to solve a problem. They showed great problem-solving skills by identifying the root cause and taking the initiative to learn a new tool. The outcome was positive, as the client was satisfied and increased their business with the company. The self-reflection was good, but the communication could have been improved by providing more details on how they presented the new report to the client. Overall, the candidate displayed a high level of creativity and problem-solving ability."
+}
+
+
+
+----------- Complex Question and Complex Answer --------------
+
+Question: Imagine you're leading a team that has a conflict about the direction of a project. How would you resolve this situation?
+Role Evaluator: You are the best creativity test evaluator. You are going to receive an answer from a candidate that is applying for a job to this question : '" + question_1 + "'. I need you to give scores based on this metrics: Specificity, Relevance, Problem-Solving, Initiative, Outcome, Self-Reflection, Creativity, Communication. Also give me a short explanation of your evaluation with pros and cons. Give an answer in a json format where each field is a metric, and also add average score and the explanation fields. 
+
+--- 1 ---
+
+Pricing: 0.0001825$
+
+Answer Candidate: In the face of conflict about the direction of a project, I believe it's essential to first create an open dialogue within the team. Conflict often arises from miscommunication or differing perspectives, so providing a space for everyone to voice their opinions can help clear misunderstandings and shed light on the crux of the disagreement. I would convene a meeting where each team member can share their view on the project's direction and the reasons behind their stance. It's crucial to ensure this conversation is respectful and constructive, with each viewpoint given equal consideration. However, facilitating dialogue is just the beginning. I would then work on synthesizing these perspectives, identifying common ground and areas of divergence. Where consensus isn't possible, I'd lean on data and evidence to guide decision-making, striving for a solution that is most likely to meet our project goals and deliver value. In parallel, I would also seek external advice, perhaps from a mentor or a trusted colleague not involved in the project. This can provide fresh insights and help identify any blind spots within the team. Finally, it's important to remember that resolving the conflict is not just about deciding the project's direction—it's also about maintaining team cohesion and morale. Therefore, after a decision is made, I would communicate it back to the team transparently, explaining the rationale behind it and acknowledging the valid points from differing perspectives. Ultimately, such conflicts can serve as a catalyst for teams to introspect, innovate, and improve their decision-making processes. Therefore, while navigating these conflicts can be challenging, they can also become opportunities for growth, both for the individuals involved and for the team as a whole.
+
+Answer Model: 
+{
+    "Specificity": 8,
+    "Relevance": 10,
+    "Problem-Solving": 9,
+    "Initiative": 8,
+    "Outcome": 9,
+    "Self-Reflection": 8,
+    "Creativity": 7,
+    "Communication": 9,
+    "AvgScore": 8.5,
+    "Explanation": "The candidate's answer shows good relevance and problem-solving skills, as they first acknowledge the importance of creating an open dialogue within the team and then suggest specific steps to resolve the conflict. They also show initiative by seeking external advice and considering data and evidence to guide decision-making. Their answer demonstrates good communication skills by emphasizing the need for transparency and acknowledging differing perspectives. However, the answer could have been more creative and self-reflective. Overall, the candidate's response is thorough and thoughtful, showcasing their ability to lead a team through conflict resolution."
+}
+
+
+
