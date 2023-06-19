@@ -1,0 +1,31 @@
+# closeAI
+Just playing with AI...
+
+19/06 Today I continued playing with OpenAI API. This is what I got:
+
+
+Pricing for 1 prompt : ![image](https://github.com/SergioNietoP/closeAI/assets/55253113/c37f646a-581b-413d-8807-15212e1b49d3)
+
+```question_1 = "Tell me about a time when you had to work as part of a team. What was your role and how did you contribute to the team's success?"
+
+completion = openai.ChatCompletion.create(
+  model = "gpt-3.5-turbo",
+  temperature = 0.8,
+  max_tokens = 2000,
+  messages = [
+    {"role": "system", "content": "You are the best personality test evaluator. You are going to receive an answer from a candidate that is applying for a job to this question : '" + question_1 + "'. I need you to give just 2 scores , the creativity score and the average score. Also give me a short explanation of your evaluation with pros and cons. Give you answer in a json format with this fields: score_creativity, average and briefing. " },
+    {"role": "user", "content": "I guess I've worked on teams before. I'm usually the one who just goes along with whatever the team decides. I don't like confrontation, so I just do whatever I'm told to do. I don't really remember a specific project or anything."}
+  ]
+)
+
+print(completion.choices[0].message.content) ```
+
+
+EXIT:
+
+{
+"score_creativity": 2,
+"average": 3,
+"briefing": "The candidate's response indicates a lack of creativity, as they do not offer any unique ideas or approaches to working as part of a team. Additionally, their role in the team seems to be passive, as they simply go along with whatever the team decides. However, the candidate does demonstrate some level of teamwork skills by acknowledging their role as a team member and being willing to follow directions. Overall, the candidate's response is average, but lacking in creativity."
+}
+
