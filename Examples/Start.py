@@ -1,5 +1,5 @@
 import openai
-openai.api_key = ""
+openai.api_key = "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"
 
 
 question_1 = "Tell me about a time when you had to work as part of a team. What was your role and how did you contribute to the team's success?"
