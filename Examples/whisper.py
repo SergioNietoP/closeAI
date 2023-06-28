@@ -1,7 +1,7 @@
 import openai
 
 # Set the API key
-openai.api_key = "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"
+openai.api_key = ""
 
 # Open the audio file and transcribe it
 with open("Examples/answer_2.mp3", "rb") as audio_file:
