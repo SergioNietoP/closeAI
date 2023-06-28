@@ -1,0 +1,137 @@
+# closeAI
+Just playing with AI...
+
+
+------------------- 19/06 --------------------
+
+oday I started playing with Whisper, the speech-to-text algorithm from OpenAI. 
+
+I started asking for the transcription of a poor quality .mp3 audio . It has a duration of 1:18 minutes.
+
+Cost: 0.05$
+
+Code ->
+
+```
+import openai
+
+# Set the API key
+openai.api_key = "API-KEY"
+
+# Open the audio file and transcribe it
+with open("path-audio.mp3", "rb") as audio_file:
+    transcript = openai.Audio.transcribe(
+        file = audio_file,
+        model = "whisper-1",
+        response_format="text"
+    )
+
+# Print the transcript
+print(transcript)
+```
+
+
+
+
+------------------- 28/06 --------------------
+
+Today we made a closer approch to whisper by combining it with ChatGPT API as an evaluator role. Here are the results:
+
+------ Answer-1 ------
+
+In this test we tried to make an average-good response.
+
+Question: magine you're leading a team that has a conflict about the direction of a project. How would you resolve this situation?
+
+Role System: You are the best creativity test evaluator. You are going to receive an answer from a candidate that is applying for a job to this question : '" + question_1 + "'. I need you to give scores based on this metrics: Specificity, Relevance, Problem-Solving, Initiative, Outcome, Self-Reflection, Creativity, Communication. Also give me a short explanation of your evaluation with pros and cons. Give an answer in a json format where each field is a metric, and also add average score and the explanation fields.
+
+User Role Answer (Input Speech-to-audio): 
+
+In my previous role at XYZ company, we were struggling with a major client who was not happy with the standard reports we were providing. I suggested we rebound the report layout and design a more interactive, visually appealing format using a new data visualization tool. It took the initiative to learn the tool, redesigning the report and presenting it to the client. They loved the new format, 
+which not only resolved their initial complaints but also led to them increasing their business with us. This experience taught me that creative solutions can turn challenges into opportunities.     
+
+(Whisper detected correctly almost every word , the only mistake it made was with "rebound" whereas i said "revamp" (maybe i made a pronunciation mistake))
+
+
+Answer API:
+{
+  "Specificity": 8,
+  "Relevance": 9,
+  "Problem-Solving": 9,
+  "Initiative": 10,
+  "Outcome": 9,
+  "Self-Reflection": 7,
+  "Creativity": 10,
+  "Communication": 8,
+  "Average Score": 8.75,
+  "Explanation": "The candidate's answer demonstrates a high level of specificity, relevance, problem-solving skills, and initiative. They provide a clear example from their previous role, where they took the initiative to suggest a creative solution to a problem with a major client. The outcome of their solution was positive, leading to an increase in business. However, the candidate's self-reflection and communication could be further improved."
+
+
+
+
+
+  ------ Answer-2 ------
+
+  This answer started talking about a non-related topic and in the second half i totally changed reading part of what is considered a brilliant answer. Also in the first half of the audio I got stuck several times with "eh" , silences and repeting words in excess. As we can see the "eh" and the silences are not detected by whisper.
+
+
+User Role Answer (Input Speech-to-audio): 
+Well, last year I traveled to Monaco where I drove a Ferrari car and it was pretty awesome actually. I really really really really really really really enjoyed my experience and since that I've been working in a company but I face a conflict about the erasing of a project. I believe it's essential to first create an open dialogue within the team and conflict often arises from miscommunication or different perspectives so providing a space for everyone to voice their opinions can help clear misunderstandings and set light on the cracks of the disagreement. I would convene a meeting where each team member can share their view on the project's direction and the reason behind their stance. It's crucial to ensure this conversation is respectful and constructive with each point given equal consideration.
+
+
+Answer API:
+
+{
+  "Specificity": 2,
+  "Relevance": 3,
+  "Problem-Solving": 4,
+  "Initiative": 2,
+  "Outcome": 3,
+  "Self-Reflection": 2,
+  "Creativity": 1,
+  "Communication": 4,
+  "average_score": 2.375,
+  "explanation": "The candidate's response lacks specificity as they provided unrelated information about their personal trip to Monaco. While their suggestion of creating an open dialogue and convening a meeting to allow team members to share their views shows relevance and problem-solving skills, their answer lacks initiative and self-reflection. The mention of ensuring a respectful and constructive conversation indicates good communication skills, but overall, the response lacks creativity and a clear explanation of the intended outcome."
+
+
+
+
+CODE:
+```
+import openai
+
+# Set the API key
+openai.api_key = "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"
+
+# Open the audio file and transcribe it
+with open("Examples/answer_2.mp3", "rb") as audio_file:
+    transcript = openai.Audio.transcribe(
+        file = audio_file,
+        model = "whisper-1",
+        response_format="text"
+    )
+
+# Print the transcript
+print(transcript)
+
+question_1 = " Imagine you're leading a team that has a conflict about the direction of a project. How would you resolve this situation?"
+
+completion = openai.ChatCompletion.create(
+  model = "gpt-3.5-turbo",
+  temperature = 0.8,
+  max_tokens = 2000,
+  messages = [
+    {"role": "system", "content": "You are the best creativity test evaluator. You are going to receive an answer from a candidate that is applying for a job to this question : '" + question_1 + "'. I need you to give scores based on this metrics: Specificity, Relevance, Problem-Solving, Initiative, Outcome, Self-Reflection, Creativity, Communication. Also give me a short explanation of your evaluation with pros and cons. Give an answer in a json format where each field is a metric, and also add average score and the explanation fields." },
+    {"role": "user", "content": transcript}
+  ]
+)
+
+print(completion.choices[0].message.content)
+```
+
+
+
+
+
+
+
