@@ -1,0 +1,148 @@
+
+CODE:
+
+```
+import openai
+openai.api_key = ""
+
+
+
+completion = openai.ChatCompletion.create(
+  model = "gpt-3.5-turbo",
+  temperature = 0.8,
+  max_tokens = 2000,
+  messages = [
+    {"role": "system", "content": "You are the best question generator, you know about everything. You are going to receive an array of assessables objects. For each assessable you will have the title and the description. Based on that info I want you to develop questions to evaluate the knowledge of users in this topic. For each assessable, you have to choose 4 topics . Each topic will have 5 questions related to this topic ( this is very important ) in total 20 questions. Give the answer with this structure: assessable_title: { topic_title1:  { question_1, question_2, ..., question_5 }, topic_title2: {}}. Fill each variable of the output with its corresponding value." },
+    {"role": "user", "content": "[{'title': 'Técnicas de Ventas', 'description': 'El cliente, la comunicación con el cliente, el ejercicio de la venta, la negociación, la gestión de la objeción, técnicas de cierre de la venta, etc.'}, {'title': 'Gestor de redes sociales', 'description': 'El gestor de redes sociales es el responsable de definir y ejecutar la estrategia de presencia y comunicación en las redes sociales de la empresa, supervisando su implementación, analizando su desempeño e interactuando con la audiencia.'}, {'title': 'React Mid-Level', 'description': 'Evaluación de los elementos fundamentales del lenguaje a través de la revisión de conceptos básicos, pruebas para completar un código inacabado, técnicas de depuración de errores y desarrollo de una funcionalidad concreta.'}, {'title': 'Nutricionista', 'description': 'El nutricionista presta asesoramiento sobre la alimentación a todo tipo de personas, mediante planes personalizados que facilitan el tratamiento nutricional de patologías y su prevención.'}, {'title': 'Alemán', 'description': 'Prueba de nivel conforme al MCER (Marco Común Europeo de Referencia) para los niveles entre el A1 y el B2.'}, {'title': 'Científico de datos', 'description': 'El científico de datos trabaja con grandes volúmenes de información, extrayendo y modelando datos de múltiples fuentes internas y externas, y trabajando analíticamente la información para proporcionar valor a la empresa y a sus clientes.'}]"}
+  ]
+)
+
+print(completion.choices[0].message.content)
+```
+
+
+
+
+Output: 
+
+Técnicas de Ventas: 
+{'El cliente':
+   {'¿Cuál es la importancia de conocer a fondo a nuestro cliente a la hora de realizar una venta?',
+    '¿Qué aspectos deberíamos tener en cuenta al comunicarnos con un cliente?',
+    '¿Cuáles son las etapas del proceso de venta?',
+    '¿Qué estrategias podemos utilizar para negociar con un cliente?',
+    '¿Cómo podemos gestionar una objeción de un cliente durante una venta?'},
+ 'La comunicación con el cliente':
+   {'¿Cuáles son las habilidades de comunicación más importantes en la interacción con un cliente?',
+    '¿Cómo podemos adaptar nuestro lenguaje y tono de voz al tratar con diferentes tipos de clientes?',
+    '¿Cuáles son las barreras más comunes en la comunicación con un cliente y cómo podemos superarlas?',
+    '¿Qué técnicas podemos utilizar para establecer una conexión y generar confianza con un cliente?',
+    '¿Cuál es la importancia de escuchar activamente al cliente durante una conversación de ventas?'},
+ 'El ejercicio de la venta':
+   {'¿Qué habilidades y características son necesarias para ser un buen vendedor?',
+    '¿Qué estrategias podemos utilizar para identificar las necesidades del cliente?',
+    '¿Cómo podemos presentar nuestro producto o servicio de manera persuasiva?',
+    '¿Cuáles son las técnicas más efectivas para manejar las objeciones de un cliente?',
+    '¿Qué métodos podemos emplear para hacer seguimiento a un cliente y cerrar una venta?'},
+ 'La negociación':
+   {'¿Qué principios y tácticas son fundamentales para una negociación exitosa?',
+    '¿Cómo podemos identificar los intereses y necesidades del cliente durante una negociación?',
+    '¿Qué estrategias podemos utilizar para lograr un acuerdo beneficioso para ambas partes?',
+    '¿Cuáles son las técnicas más efectivas para manejar los conflictos durante una negociación?',
+    '¿Cómo podemos cerrar una negociación de manera efectiva y satisfactoria para ambas partes?'}}
+
+Gestor de redes sociales:
+{'Definición y ejecución de la estrategia de presencia en redes sociales':
+   {'¿Cuáles son los pasos a seguir para definir una estrategia de presencia en redes sociales?',
+    '¿Cómo podemos identificar a nuestra audiencia objetivo en las redes sociales?',
+    '¿Cuáles son las principales métricas a analizar para evaluar el desempeño de una estrategia de redes sociales?',
+    '¿Qué herramientas podemos utilizar para programar y gestionar contenido en las redes sociales?',
+    '¿Cuál es la importancia de interactuar con la audiencia en las redes sociales?'},
+ 'Implementación y supervisión de la estrategia en redes sociales':
+   {'¿Qué elementos debemos tener en cuenta al crear contenido para redes sociales?',
+    '¿Cómo podemos medir el impacto y alcance de nuestras publicaciones en las redes sociales?',
+    '¿Qué acciones podemos realizar para aumentar el engagement en nuestras publicaciones?',
+    '¿Cuáles son las mejores prácticas para gestionar y responder a los comentarios de los usuarios en redes sociales?',
+    '¿Qué estrategias podemos utilizar para mantener una imagen de marca coherente en las redes sociales?'},
+ 'Análisis de desempeño en redes sociales':
+   {'¿Qué métricas y KPIs son relevantes para analizar el desempeño de una estrategia en redes sociales?',
+    '¿Cómo podemos identificar tendencias y patrones en los datos de redes sociales?',
+    '¿Qué herramientas y técnicas podemos utilizar para realizar un análisis de competencia en redes sociales?',
+    '¿Cuál es la importancia de realizar informes y reportes periódicos sobre el desempeño en redes sociales?',
+    '¿Qué acciones se pueden tomar para mejorar el desempeño de una estrategia en redes sociales?'},
+ 'Interacción con la audiencia en redes sociales':
+   {'¿Cómo podemos fomentar la participación y la interacción de los usuarios en nuestras publicaciones?',
+    '¿Cuáles son las mejores prácticas para resolver problemas o quejas de los usuarios en redes sociales?',
+    '¿Qué estrategias podemos utilizar para generar contenido viral en las redes sociales?',
+    '¿Cómo podemos aprovechar las tendencias y eventos actuales para crear contenido relevante en redes sociales?',
+    '¿Cuáles son las ventajas de utilizar el monitoreo de redes sociales para la gestión de la reputación de una marca?'}}
+
+React Mid-Level:
+{'Revisión de conceptos básicos':
+   {'¿Cuál es la diferencia entre React y React Native?',
+    '¿Qué es JSX y cómo se utiliza en React?',
+    '¿Cuál es el propósito del virtual DOM en React?',
+    '¿Cuándo es apropiado utilizar un componente de clase en lugar de un componente funcional en React?',
+    '¿Cómo se manejan los estados en un componente de React?'},
+ 'Pruebas de código':
+   {'¿Qué es un test unitario y cómo se implementa en un proyecto de React?',
+    '¿Cuál es la importancia de las pruebas de integración en el desarrollo de aplicaciones de React?',
+    '¿Qué herramientas y bibliotecas populares se utilizan para realizar pruebas en React?',
+    '¿Cómo se puede simular eventos y acciones en las pruebas de React?',
+    '¿Qué es el snapshot testing y cómo se utiliza en React?'},
+ 'Depuración de errores':
+   {'¿Cuáles son las herramientas y técnicas más comunes para depurar errores en aplicaciones de React?',
+    '¿Cómo se puede utilizar el navegador para depurar aplicaciones de React?',
+    '¿Cuál es la importancia de la gestión de errores en el desarrollo de aplicaciones de React?',
+    '¿Qué estrategias podemos utilizar para manejar errores asincrónicos en React?',
+    '¿Cuál es la diferencia entre un error de sintaxis y un error lógico en React?'},
+ 'Desarrollo de funcionalidades':
+   {'¿Cómo se puede crear un componente reutilizable en React?',
+    '¿Qué son los props y cómo se utilizan para pasar datos entre componentes en React?',
+    '¿Cuál es la diferencia entre state y props en React?',
+    '¿Cómo se puede gestionar el ciclo de vida de un componente en React?',
+    '¿Qué es el enrutamiento en React y cómo se puede implementar?'}}
+
+Nutricionista:
+{'Asesoramiento sobre alimentación':
+   {'¿Cuáles son los aspectos más importantes a considerar al diseñar un plan de alimentación personalizado?',
+    '¿Cómo se pueden identificar las necesidades nutricionales de un individuo?',
+    '¿Qué estrategias se pueden utilizar para asesorar a personas con patologías específicas en su alimentación?',
+    '¿Cómo se puede ayudar a prevenir enfermedades a través de la alimentación?',
+    '¿Cuáles son los beneficios de seguir una alimentación equilibrada y variada?'},
+ 'Tratamiento nutricional de patologías':
+   {'¿Cuáles son los principales trastornos alimentarios y cómo se pueden abordar desde la nutrición?',
+    '¿Qué pautas se pueden seguir para ayudar a personas con diabetes a controlar su alimentación?',
+    '¿Cómo se puede asesorar a personas con enfermedades cardiovasculares en su alimentación?',
+    '¿Qué recomendaciones se pueden dar a personas con trastornos de la conducta alimentaria?',
+    '¿Cuál es la importancia de la nutrición en el tratamiento del cáncer?'},
+ 'Prevención de patologías a través de la alimentación':
+   {'¿Qué hábitos alimentarios saludables se pueden promover para prevenir enfermedades crónicas?',
+    '¿Cuáles son los nutrientes esenciales para fortalecer el sistema inmunológico?',
+    '¿Qué estrategias se pueden utilizar para promover una alimentación saludable en la población infantil?',
+    '¿Cuáles son los efectos de una mala alimentación en el desarrollo de enfermedades?',
+    '¿Cómo se pueden abordar los trastornos de la conducta alimentaria desde la prevención?'},
+ 'Hábitos y estilos de vida saludables':
+   {'¿Cuáles son las recomendaciones generales para mantener un estilo de vida saludable?',
+    '¿Qué estrategias se pueden utilizar para fomentar la actividad física en la población?',
+    '¿Cuál es la importancia de una buena hidratación para la salud?',
+    '¿Qué pautas se pueden seguir para promover un sueño saludable?',
+    '¿Cuáles son las consecuencias de fumar y beber alcohol en exceso para la salud?'}}
+
+Alemán:
+{'Nivel A1':
+   {'¿Cuál es el objetivo principal del nivel A1 en el MCER en alemán?',
+    '¿Qué temas gramaticales se estud
+// END
+   '}}
+
+Aqui termina porque hemos puesto max_tokens = 2000
+
+11:55
+Local time: 28 jun 2023, 13:55
+gpt-3.5-turbo-0613, 1 request
+521 prompt + 2,000 completion = 2,521 tokens
+
+Este prompt fue bastante barato.
+
+

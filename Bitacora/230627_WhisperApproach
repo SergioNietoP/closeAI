@@ -35,7 +35,7 @@ print(transcript)
 
 ------------------- 28/06 --------------------
 
-Today we made a closer approch to whisper by combining it with ChatGPT API as an evaluator role. Here are the results:
+Today we made a closer approch to whisper by combining it with ChatGPT API as an evaluator role. Total cost of 5 tests was around 0.02$. Here are the results:
 
 ------ Answer-1 ------
 
