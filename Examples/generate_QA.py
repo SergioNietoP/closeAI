@@ -1,7 +1,11 @@
 import openai
-openai.api_key = ""
+import time
+import os
 
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
+# Start the timer
+start_time = time.time()
 
 completion = openai.ChatCompletion.create(
   model = "gpt-3.5-turbo",
@@ -14,3 +18,8 @@ completion = openai.ChatCompletion.create(
 )
 
 print(completion.choices[0].message.content)
+
+
+# Calculate the elapsed time
+elapsed_time = time.time() - start_time
+print("Elapsed Time:", elapsed_time, "seconds")
