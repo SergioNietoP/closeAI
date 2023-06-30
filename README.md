@@ -1,3 +1,3 @@
 # closeAI
 
-- :zap: Just playing with AI.
+:zap: Just playing with AI.
