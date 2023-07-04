@@ -8,13 +8,14 @@ openai.api_key = os.getenv('OPENAI_API_KEY')
 start_time = time.time()
 
 question = ""
+language = ""
 
 completion = openai.ChatCompletion.create(
   model = "gpt-3.5-turbo",
   temperature = 0.8,
   max_tokens = 2000,
   messages = [
-    {"role": "system", "content": "You are the best coding evaluator, you are an specialist in Python programming. You are going to receive a solution made by a candidate for this question: " + question + ". Give an complex score ( different parameters ) and explanation of your evaluation in a json format." },
+    {"role": "system", "content": "You are the best coding evaluator, you are an specialist in" + language + " programming. You are going to receive a solution made by a candidate for this question: " + question + ". Give an complex score ( different parameters ) and explanation of your evaluation in a json format." },
     {"role": "user", "content": ""}
   ]
 )
