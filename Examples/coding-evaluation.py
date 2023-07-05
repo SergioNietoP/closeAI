@@ -15,7 +15,7 @@ completion = openai.ChatCompletion.create(
   temperature = 0.8,
   max_tokens = 2000,
   messages = [
-    {"role": "system", "content": "You are the best coding evaluator, you are an specialist in" + language + " programming. You are going to receive a solution made by a candidate for this question: " + question + ". Give an complex score ( different parameters ) and explanation of your evaluation in a json format." },
+    {"role": "system", "content": "You are the best coding evaluator, you are an specialist in" + language + " programming. You are going to receive a solution made by a candidate for this question: " + question + ". Give a score out of 10 for different metrics: readibility , decisive , creativity and average score .Write and explanation of your evaluation and show what you consider a perfect answer. Give an complex score ( different parameters ) and explanation of your evaluation in a json format." },
     {"role": "user", "content": ""}
   ]
 )
