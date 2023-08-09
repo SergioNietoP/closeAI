@@ -41,7 +41,7 @@ You will find different examples with AI ( content generation, chatbots, input c
 ### Documentation
 - [Deep Learning](https://www.deeplearning.ai/short-courses/)
 - [MiniLM](https://github.com/microsoft/unilm/tree/master/minilm)
-  [LLama2](https://ai.meta.com/llama/)
+- [LLama2](https://ai.meta.com/llama/)
 - [Transformers](https://huggingface.co/docs/transformers/index)
 - [Models OpenAI](https://platform.openai.com/docs/models)
 - [Whisper API](https://openai.com/research/whisper)
