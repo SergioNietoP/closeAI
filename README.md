@@ -47,7 +47,7 @@ You will find different examples with AI ( content generation, chatbots, input c
 - [Whisper API](https://openai.com/research/whisper)
 - [Embeddings OpenAI](https://platform.openai.com/docs/guides/embeddings)
 - [LangChain](https://python.langchain.com/docs/get_started/introduction.html)
-- [PineCone]([http://electron.atom.io/](https://www.pinecone.io/))
+- [PineCone](https://www.pinecone.io/)
 - [Chroma](https://www.trychroma.com/)
 
 
