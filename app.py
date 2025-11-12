@@ -86,7 +86,9 @@ def evaluate_answer():
             return jsonify({'success': True, 'evaluation': {'raw': result}})
             
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        # Log the actual error but don't expose details to users
+        app.logger.error(f'Error evaluating answer: {str(e)}')
+        return jsonify({'error': 'An error occurred while processing your request. Please try again.'}), 500
 
 
 @app.route('/api/generate-questions', methods=['POST'])
@@ -126,7 +128,9 @@ def generate_questions():
         return jsonify({'success': True, 'questions': result})
             
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        # Log the actual error but don't expose details to users
+        app.logger.error(f'Error generating questions: {str(e)}')
+        return jsonify({'error': 'An error occurred while processing your request. Please try again.'}), 500
 
 
 @app.route('/api/analyze-text', methods=['POST'])
@@ -164,7 +168,9 @@ def analyze_text():
         return jsonify({'success': True, 'analysis': result})
             
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        # Log the actual error but don't expose details to users
+        app.logger.error(f'Error analyzing text: {str(e)}')
+        return jsonify({'error': 'An error occurred while processing your request. Please try again.'}), 500
 
 
 @app.route('/api/chat', methods=['POST'])
@@ -200,7 +206,9 @@ def chat_api():
         return jsonify({'success': True, 'response': result})
             
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        # Log the actual error but don't expose details to users
+        app.logger.error(f'Error in chat: {str(e)}')
+        return jsonify({'error': 'An error occurred while processing your request. Please try again.'}), 500
 
 
 @app.errorhandler(404)

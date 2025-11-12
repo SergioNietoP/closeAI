@@ -62,6 +62,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     function addMessage(content, sender) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${sender}`;
@@ -70,7 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
         messageContent.className = 'message-content';
         
         const prefix = sender === 'user' ? '<strong>You:</strong> ' : '<strong>AI Assistant:</strong> ';
-        messageContent.innerHTML = prefix + content.replace(/\n/g, '<br>');
+        const escapedContent = escapeHtml(content).replace(/\n/g, '<br>');
+        messageContent.innerHTML = prefix + escapedContent;
         
         messageDiv.appendChild(messageContent);
         chatMessages.appendChild(messageDiv);
