@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}AI Chat - CloseAI{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>💬 AI Chat</h1>
+        <p>Have a conversation with an AI assistant</p>
+    </div>
+
+    <div class="chat-container">
+        <div id="chatMessages" class="chat-messages">
+            <div class="message assistant">
+                <div class="message-content">
+                    <strong>AI Assistant:</strong> Hello! I'm here to help you. Ask me anything!
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-input-container">
+            <textarea id="chatInput" rows="2" placeholder="Type your message..."></textarea>
+            <button id="sendBtn" class="btn btn-primary">Send</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}

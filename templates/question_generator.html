@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Question Generator - CloseAI{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>❓ Question Generator</h1>
+        <p>Generate comprehensive assessment questions for any topic</p>
+    </div>
+
+    <div class="tool-container">
+        <div class="form-section">
+            <div class="form-group">
+                <label>Add Topics</label>
+                <div id="topicsContainer">
+                    <div class="topic-input">
+                        <input type="text" class="topic-title" placeholder="Topic Title (e.g., React Development)">
+                        <textarea class="topic-description" rows="2" placeholder="Topic Description"></textarea>
+                    </div>
+                </div>
+                <button id="addTopicBtn" class="btn btn-secondary">+ Add Another Topic</button>
+            </div>
+
+            <button id="generateBtn" class="btn btn-primary btn-large">Generate Questions</button>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Generating questions...</p>
+        </div>
+
+        <div id="results" class="results-section" style="display: none;">
+            <h2>Generated Questions</h2>
+            <div id="resultsContent"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/questions.js') }}"></script>
+{% endblock %}
