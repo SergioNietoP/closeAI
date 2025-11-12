@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <div class="container">
+        <h1>🤖 CloseAI</h1>
+        <p class="hero-subtitle">AI Experimentation Platform</p>
+        <p class="hero-description">Explore the power of AI through interactive tools and demos</p>
+    </div>
+</div>
+
+<div class="container">
+    <section class="features">
+        <h2>Available Tools</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎤</div>
+                <h3>Interview Evaluator</h3>
+                <p>Evaluate interview responses using AI. Get detailed feedback on creativity, communication, problem-solving, and more.</p>
+                <a href="/interview-evaluator" class="btn btn-primary">Try It</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">❓</div>
+                <h3>Question Generator</h3>
+                <p>Generate comprehensive assessment questions for any topic. Perfect for creating tests and evaluations.</p>
+                <a href="/question-generator" class="btn btn-primary">Try It</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Text Analyzer</h3>
+                <p>Analyze text for sentiment, grammar, style, and content. Get AI-powered insights and suggestions.</p>
+                <a href="/text-analyzer" class="btn btn-primary">Try It</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>AI Chat</h3>
+                <p>Have a conversation with an AI assistant. Ask questions, get help, or explore various topics.</p>
+                <a href="/chat" class="btn btn-primary">Try It</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <h2>About CloseAI</h2>
+        <p>CloseAI is an AI experimentation platform that showcases various applications of artificial intelligence. Built with OpenAI's powerful models, this platform demonstrates practical use cases including:</p>
+        <ul>
+            <li>Automated interview evaluation and feedback</li>
+            <li>Intelligent question generation for assessments</li>
+            <li>Advanced text analysis and processing</li>
+            <li>Interactive chat with AI assistance</li>
+            <li>Audio transcription and analysis (Whisper API)</li>
+        </ul>
+        <p>Whether you're exploring AI capabilities, building similar tools, or conducting research, CloseAI provides hands-on examples of what's possible with modern AI technology.</p>
+    </section>
+
+    <section class="tech-stack">
+        <h2>Technology Stack</h2>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <strong>Backend:</strong> Python, Flask
+            </div>
+            <div class="tech-item">
+                <strong>AI:</strong> OpenAI GPT-3.5, Whisper
+            </div>
+            <div class="tech-item">
+                <strong>Frontend:</strong> HTML5, CSS3, JavaScript
+            </div>
+            <div class="tech-item">
+                <strong>Tools:</strong> LangChain, ChromaDB, PineCone
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
